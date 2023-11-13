@@ -17,7 +17,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    height: calc(100vh * (2.03 - var(--zoom-thing)));
+    min-height: calc(100vh * (2.05 - var(--zoom-thing)));
     overflow: hidden;
 }
 
