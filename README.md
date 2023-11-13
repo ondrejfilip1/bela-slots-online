@@ -6,12 +6,12 @@
 ## 🏆 Wins
 
 <p>
-  <strong>Four leaf clover</strong> - Adds 5000$
-  <strong>Seven</strong> - Adds 4000$
-  <strong>Diamond</strong> - Adds 4000$
-  <strong>Cherry</strong> - Adds 3000$
-  <strong>Grapes</strong> - Adds 3000$
-  <strong>Bar</strong> - Adds 2000$
+  <strong>Four leaf clover</strong> - Adds 5000$<br>
+  <strong>Seven</strong> - Adds 4000$<br>
+  <strong>Diamond</strong> - Adds 4000$<br>
+  <strong>Cherry</strong> - Adds 3000$<br>
+  <strong>Grapes</strong> - Adds 3000$<br>
+  <strong>Bar</strong> - Adds 2000$<br>
   <strong>Dollar</strong> - Adds 2000$
 </p>
 
