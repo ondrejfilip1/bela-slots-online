@@ -3,7 +3,8 @@
 
 <h2 align="center">Become the talented gambler you always wanted to be...</h2>
 
-<h3>🏆 Wins</h3>
+## 🏆 Wins
+
 <p>
   <strong>Four leaf clover</strong> - Adds 5000$
   <strong>Seven</strong> - Adds 4000$
