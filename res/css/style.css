@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400&display=swap');
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+}
+
+:root {
+    --zoom-thing: 1;
+}
+
+body {
+    margin: 0;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh * (2.03 - var(--zoom-thing)));
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.sloty {
+    width: max-content!important;
+    height: 158px;
+    background-position: center;
+    background-image: linear-gradient(90deg, #170e5f, #170e5f 5%, #2a03ac, #170e5f, #170e5f, #2a03ac 50%, #170e5f, #170e5f, #2a03ac 83%, #170e5f, #170e5f);
+    border: 4px solid;
+    border-image-source: linear-gradient(to right, #c7841f, #bda30f);
+    border-image-slice: 1;
+    outline: 4px solid gold;
+    box-shadow: 0px 0px 40px gold;
+}
+
+.sloty img:not(:last-child) {
+    border-right: 2px solid #3926cc;
+}
+
+.sloty img {
+    padding: 25px;
+}
+
+img#spin {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    cursor: pointer;
+    justify-self: center;
+    transition: .1s transform, .2s filter;
+}
+
+img#spin:hover {
+    transform: scale(1.1);
+}
+
+img#spin:active {
+    transition: 0s transform;
+    transform: scale(0.95);
+}
+
+img#bigwin {
+    --width-bigwin: 350px;
+    width: var(--width-bigwin);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 200px;
+    bottom: 0;
+    margin-inline: auto;
+    animation: 3s bigwin cubic-bezier(0.47, 0.43, 0.64, 0.98);
+}
+
+@keyframes bigwin {
+    from {
+        scale: 0.2;
+        opacity: 0;
+    }
+
+    30% {
+        scale: 0.9;
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        scale: 1;
+    }
+}
+
+p {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+    color: white;
+    border-radius: 40px;
+    border: 3px solid rgb(43, 50, 124);
+    background-image: linear-gradient(rgba(87, 141, 221, 0.6) 0%, rgba(0, 77, 192, 0.6) 50%, rgba(23, 29, 99, 0.8) 50%, rgba(34, 40, 110, 0.8) 100%);
+    backdrop-filter: blur(3px);
+    text-align: center;
+    margin: 0;
+}
+
+img#logo {animation: 1s logo cubic-bezier(0.46, 0.03, 0.4, 1.6);}
+
+@keyframes logo {
+    from {
+        opacity: 0;
+        rotate: 15deg;
+    }
+    to {
+        opacity: 1;
+        rotate: 0deg;
+    }
+}
+
+.copyright {
+    font-family: monospace;
+    color: #ffffffb4;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+}
+
+.copyright a {
+    text-decoration: none;
+    color: #ffffffb4;
+}
+
+.copyright a:hover {
+    text-decoration: underline;
+}
+
+/* Cinska responsivita */
+
+@media only screen and (max-width: 489px) {
+    body {
+        --zoom-thing: 0.8;
+        zoom: var(--zoom-thing);
+    }
+}
+
+@media only screen and (max-width: 830px) {
+    img#logo {
+        width: 100%;
+    }
+}
