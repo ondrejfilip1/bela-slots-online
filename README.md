@@ -1,3 +1,3 @@
 # boleslots
-<center><a href="https://ondrejfilip1.github.io/boleslots/"><img src="https://github.com/ondrejfilip1/boleslots/blob/main/res/img/logo.png" alt="play" height="50px"></a></center>
+<center><a href="https://ondrejfilip1.github.io/boleslots/"><img src="https://github.com/ondrejfilip1/boleslots/blob/main/res/img/logo.png" alt="play" height="100px"></a></center><br>
 Become the talented gambler you always wanted to be...
