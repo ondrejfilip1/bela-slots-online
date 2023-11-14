@@ -38,12 +38,20 @@ body {
     box-shadow: 0px 0px 40px gold;
 }
 
-.sloty img:not(:last-child) {
+.sloty .wrapper-protoze-to-fixuje-border:not(:last-child) {
     border-right: 2px solid #3926cc;
 }
 
-.sloty img {
+.sloty .wrapper-protoze-to-fixuje-border img {
     padding: 25px;
+    transition: .5s transform;
+}
+
+.sloty .wrapper-protoze-to-fixuje-border {
+    width: fit-content;
+    height: 150px;
+    margin: 0;
+    display: inline-block;
 }
 
 img#spin {
@@ -65,7 +73,7 @@ img#spin:active {
 }
 
 img#bigwin {
-    --width-bigwin: 350px;
+    --width-bigwin: 300px;
     width: var(--width-bigwin);
     position: absolute;
     left: 0;
@@ -74,6 +82,18 @@ img#bigwin {
     bottom: 0;
     margin-inline: auto;
     animation: 3s bigwin cubic-bezier(0.47, 0.43, 0.64, 0.98);
+}
+
+img#combowin {
+    --width-combowin: 300px;
+    width: var(--width-combowin);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 250px;
+    bottom: 0;
+    margin-inline: auto;
+    animation: 1s bigwin cubic-bezier(0.47, 0.43, 0.64, 0.98);
 }
 
 @keyframes bigwin {
@@ -139,6 +159,30 @@ img#logo {animation: 1s logo cubic-bezier(0.46, 0.03, 0.4, 1.6);}
 
 .copyright a:hover {
     text-decoration: underline;
+}
+
+button#restart {
+    outline: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Kanit', sans-serif;
+    color: white;
+    border-radius: 40px;
+    border: 3px solid #2e7c2b;
+    background: transparent;
+    background-image: linear-gradient(rgba(103, 221, 87, 0.6) 0%, rgba(0, 192, 10, 0.6) 50%, rgba(23, 99, 39, 0.8) 50%, rgba(34, 110, 38, 0.8) 100%), url("../img/restart.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(3px);
+    cursor: pointer;
+    margin-top: 20px;
+    display: none;
+}
+
+button#restart:hover {
+    background-image: linear-gradient(rgba(81, 175, 68, 0.6) 0%, rgba(0, 148, 7, 0.6)50%, rgba(15, 63, 25, 0.8)50%, rgba(23, 75, 25, 0.8)100%), url("../img/restart.png");
+    border-color: #276925;
 }
 
 /* Cinska responsivita */
