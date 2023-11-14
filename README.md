@@ -5,6 +5,7 @@
 
 ## 🏆 Wins
 
+<h3>3x</h3>
 <p>
   <strong>Four leaf clover</strong> - Adds 5000$<br>
   <strong>Seven</strong> - Adds 4000$<br>
@@ -13,6 +14,13 @@
   <strong>Grapes</strong> - Adds 3000$<br>
   <strong>Bar</strong> - Adds 2000$<br>
   <strong>Dollar</strong> - Adds 2000$
+</p>
+
+<h3>Combos (same symbol on left & right)</h3>
+<p>
+  <strong>Four leaf clover</strong> - Adds 1500$<br>
+  <strong>Diamond</strong> - Adds 1000$<br>
+  <strong>Bar</strong> - Adds 1000$<br>
 </p>
 
 ## Authors
