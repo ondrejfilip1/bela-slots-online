@@ -106,7 +106,7 @@ spinace.onclick = () => {
         comboWin();
         animSlot(slot1);
         animSlot(slot3);
-        lovaky += 1000;
+        lovaky += 500;
         counter.innerHTML = "Love: " + lovaky;
     }
     if (
@@ -116,7 +116,7 @@ spinace.onclick = () => {
         comboWin();
         animSlot(slot1);
         animSlot(slot3);
-        lovaky += 1500;
+        lovaky += 1000;
         counter.innerHTML = "Love: " + lovaky;
     }
     if (
@@ -126,7 +126,7 @@ spinace.onclick = () => {
         comboWin();
         animSlot(slot1);
         animSlot(slot3);
-        lovaky += 1000;
+        lovaky += 500;
         counter.innerHTML = "Love: " + lovaky;
     }
 
@@ -185,17 +185,17 @@ function animSlot(slot) {
         slot1.style.transform = "scale(1.35)";
         setTimeout(function () {
             slot1.style.transform = "scale(1)";
-        }, 1000);
+        }, 900);
     } else if (slot === slot2) {
         slot2.style.transform = "scale(1.35)";
         setTimeout(function () {
             slot2.style.transform = "scale(1)";
-        }, 1000);
+        }, 900);
     } else if (slot === slot3) {
         slot3.style.transform = "scale(1.35)";
         setTimeout(function () {
             slot3.style.transform = "scale(1)";
-        }, 1000);
+        }, 900);
     } else {
         console.log("zadnej takovej slot neni");
     }
