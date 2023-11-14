@@ -106,7 +106,7 @@ spinace.onclick = () => {
         comboWin();
         animSlot(slot1);
         animSlot(slot3);
-        lovaky += 200;
+        lovaky += 300;
         counter.innerHTML = "Love: " + lovaky;
     }
     if (
@@ -126,7 +126,7 @@ spinace.onclick = () => {
         comboWin();
         animSlot(slot1);
         animSlot(slot3);
-        lovaky += 200;
+        lovaky += 300;
         counter.innerHTML = "Love: " + lovaky;
     }
 
