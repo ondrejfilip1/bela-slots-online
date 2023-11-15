@@ -128,7 +128,7 @@ spinace.onclick = () => {
             comboWin();
             animSlot(slot1);
             animSlot(slot3);
-            lovaky += 400 * multiplierSazka;
+            lovaky += 500 * multiplierSazka;
             counter.innerHTML = "Love: " + lovaky;
         }
         if (
