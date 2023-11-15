@@ -26,6 +26,16 @@ body {
     justify-content: center;
 }
 
+.space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sirka1 {
+    width: 500px;
+}
+
 .sloty {
     width: max-content!important;
     height: 158px;
@@ -129,6 +139,7 @@ p {
     backdrop-filter: blur(3px);
     text-align: center;
     margin: 0;
+    height: 56px;
 }
 
 img#logo {animation: 1s logo cubic-bezier(0.46, 0.03, 0.4, 1.6);}
@@ -183,6 +194,36 @@ button#restart {
 button#restart:hover {
     background-image: linear-gradient(rgba(81, 175, 68, 0.6) 0%, rgba(0, 148, 7, 0.6)50%, rgba(15, 63, 25, 0.8)50%, rgba(23, 75, 25, 0.8)100%), url("../img/restart.png");
     border-color: #276925;
+}
+
+button#plusBet, button#minusBet {
+    background: rgba(9, 255, 0, 0.4);
+    background-image: radial-gradient(#2dad297a 100%, #06b3007e 0%);
+    outline: none;
+    color: #fff;
+    border-radius: 100%;
+    font-family: monospace;
+    font-size: 17px;
+    border: 2px solid #66a82b;
+    cursor: pointer;
+}
+
+button#plusBet:hover, button#minusBet:hover {
+    background: rgba(6, 192, 0, 0.4);
+    background-image: radial-gradient(#2dad297a 0%, #06b3007e 100%);
+}
+
+#lineBet {
+    display: inline-block;
+    width: 36px!important;
+}
+
+.bet, #exekuceCounter {
+    width: 140px;
+}
+
+#exekuceCounter {
+    padding: 10px;
 }
 
 /* Cinska responsivita */

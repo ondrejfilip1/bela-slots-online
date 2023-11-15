@@ -1,4 +1,6 @@
 var icons = new Array("res/img/diamant.png", "res/img/tresen.png", "res/img/bar.png", "res/img/dolar.png", "res/img/sedmicka.png", "res/img/hrozny.png", "res/img/listek.png");
+var soundBigWin = new Audio('res/sound/bigwin.mp3');
+var soundComboWin = new Audio('res/sound/combowin.mp3');
 
 const counter = document.getElementById("lovaky");
 const spinace = document.getElementById("spin");
@@ -6,136 +8,149 @@ const slot1 = document.getElementById("1-slot");
 const slot2 = document.getElementById("2-slot");
 const slot3 = document.getElementById("3-slot");
 const restart = document.getElementById("restart");
-var sound = new Audio('res/sound/bigwin.mp3');
+const exekuceCounter = document.getElementById("exekuceCounter");
+const lineBet = document.getElementById("lineBet");
+const minusBet = document.getElementById("minusBet");
+const plusBet = document.getElementById("plusBet");
+
+let multiplierSazka = parseFloat(lineBet.innerHTML);
 
 let lovaky = 1000;
-let decreaseLove = 100;
+let decreaseLove = 100 * multiplierSazka;
+let pocetExekuci = 0;
 
 spinace.onclick = () => {
-    lovaky -= decreaseLove;
-    counter.innerHTML = "Love: " + lovaky;
-    var randomNum = Math.floor(Math.random() * icons.length);
-    slot1.src = icons[randomNum];
-    var randomNum2 = Math.floor(Math.random() * icons.length);
-    slot2.src = icons[randomNum2];
-    var randomNum3 = Math.floor(Math.random() * icons.length);
-    slot3.src = icons[randomNum3];
-
-    if (
-        slot1.src.endsWith("res/img/tresen.png") &&
-        slot2.src.endsWith("res/img/tresen.png") &&
-        slot3.src.endsWith("res/img/tresen.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 3000;
+    decreaseLove = 100 * multiplierSazka;
+    if ((lovaky - decreaseLove) < -1) {
+        alert("Na to nemas penize");
+    } else {
+        lovaky -= decreaseLove;
         counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/hrozny.png") &&
-        slot2.src.endsWith("res/img/hrozny.png") &&
-        slot3.src.endsWith("res/img/hrozny.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 3000;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/listek.png") &&
-        slot2.src.endsWith("res/img/listek.png") &&
-        slot3.src.endsWith("res/img/listek.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 5000;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/sedmicka.png") &&
-        slot2.src.endsWith("res/img/sedmicka.png") &&
-        slot3.src.endsWith("res/img/sedmicka.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 4000;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/diamant.png") &&
-        slot2.src.endsWith("res/img/diamant.png") &&
-        slot3.src.endsWith("res/img/diamant.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 4000;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/bar.png") &&
-        slot2.src.endsWith("res/img/bar.png") &&
-        slot3.src.endsWith("res/img/bar.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 2000;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/dolar.png") &&
-        slot2.src.endsWith("res/img/dolar.png") &&
-        slot3.src.endsWith("res/img/dolar.png")) {
-        bigWin();
-        animSlot(slot1);
-        animSlot(slot2);
-        animSlot(slot3);
-        lovaky += 2000;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    /* Combo winy */
-    if (
-        slot1.src.endsWith("res/img/diamant.png") &&
-        slot3.src.endsWith("res/img/diamant.png") &&
-        !slot2.src.endsWith("res/img/diamant.png")) {
-        comboWin();
-        animSlot(slot1);
-        animSlot(slot3);
-        lovaky += 300;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/listek.png") &&
-        slot3.src.endsWith("res/img/listek.png") &&
-        !slot2.src.endsWith("res/img/listek.png")) {
-        comboWin();
-        animSlot(slot1);
-        animSlot(slot3);
-        lovaky += 600;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-    if (
-        slot1.src.endsWith("res/img/bar.png") &&
-        slot3.src.endsWith("res/img/bar.png") &&
-        !slot2.src.endsWith("res/img/bar.png")) {
-        comboWin();
-        animSlot(slot1);
-        animSlot(slot3);
-        lovaky += 300;
-        counter.innerHTML = "Love: " + lovaky;
-    }
-
-    /* Check na love musi bejt na konci jinak se to dosere */
-    if (lovaky <= 0) {
-        spinace.style.pointerEvents = "none";
-        spinace.style.filter = "saturate(0)";
-        counter.innerText = "exekuce GG";
-        restart.style.display = "inline-block";
+        var randomNum = Math.floor(Math.random() * icons.length);
+        slot1.src = icons[randomNum];
+        var randomNum2 = Math.floor(Math.random() * icons.length);
+        slot2.src = icons[randomNum2];
+        var randomNum3 = Math.floor(Math.random() * icons.length);
+        slot3.src = icons[randomNum3];
+    
+        if (
+            slot1.src.endsWith("res/img/tresen.png") &&
+            slot2.src.endsWith("res/img/tresen.png") &&
+            slot3.src.endsWith("res/img/tresen.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 3000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/hrozny.png") &&
+            slot2.src.endsWith("res/img/hrozny.png") &&
+            slot3.src.endsWith("res/img/hrozny.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 3000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/listek.png") &&
+            slot2.src.endsWith("res/img/listek.png") &&
+            slot3.src.endsWith("res/img/listek.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 5000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/sedmicka.png") &&
+            slot2.src.endsWith("res/img/sedmicka.png") &&
+            slot3.src.endsWith("res/img/sedmicka.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 4000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/diamant.png") &&
+            slot2.src.endsWith("res/img/diamant.png") &&
+            slot3.src.endsWith("res/img/diamant.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 4000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/bar.png") &&
+            slot2.src.endsWith("res/img/bar.png") &&
+            slot3.src.endsWith("res/img/bar.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 2000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/dolar.png") &&
+            slot2.src.endsWith("res/img/dolar.png") &&
+            slot3.src.endsWith("res/img/dolar.png")) {
+            bigWin();
+            animSlot(slot1);
+            animSlot(slot2);
+            animSlot(slot3);
+            lovaky += 2000 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        /* Combo winy */
+        if (
+            slot1.src.endsWith("res/img/diamant.png") &&
+            slot3.src.endsWith("res/img/diamant.png") &&
+            !slot2.src.endsWith("res/img/diamant.png")) {
+            comboWin();
+            animSlot(slot1);
+            animSlot(slot3);
+            lovaky += 300 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/listek.png") &&
+            slot3.src.endsWith("res/img/listek.png") &&
+            !slot2.src.endsWith("res/img/listek.png")) {
+            comboWin();
+            animSlot(slot1);
+            animSlot(slot3);
+            lovaky += 400 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+        if (
+            slot1.src.endsWith("res/img/bar.png") &&
+            slot3.src.endsWith("res/img/bar.png") &&
+            !slot2.src.endsWith("res/img/bar.png")) {
+            comboWin();
+            animSlot(slot1);
+            animSlot(slot3);
+            lovaky += 300 * multiplierSazka;
+            counter.innerHTML = "Love: " + lovaky;
+        }
+    
+        /* Check na love musi bejt na konci jinak se to dosere */
+        if (lovaky <= 0) {
+            spinace.style.pointerEvents = "none";
+            spinace.style.filter = "saturate(0)";
+            counter.innerText = "exekuce GG";
+            restart.style.display = "inline-block";
+            pocetExekuci++;
+            exekuceCounter.innerText = "Exekuce: " + pocetExekuci;
+        }
     }
 }
 
@@ -147,8 +162,45 @@ restart.onclick = () => {
     spinace.style.filter = "saturate(1)";
 }
 
+minusBet.onclick = () => {
+    if (lineBet.innerText == 1) {
+        lineBet.innerText = 0.5;
+        minusBet.style.filter = "saturate(0)";
+        minusBet.style.pointerEvents = "none";
+        plusBet.style.filter = "saturate(1)";
+        plusBet.style.pointerEvents = "all";
+        multiplierSazka = parseFloat(lineBet.innerHTML);
+    } else if (lineBet.innerText == 2) {
+        lineBet.innerText = 1;
+        minusBet.style.filter = "saturate(1)";
+        minusBet.style.pointerEvents = "all";
+        plusBet.style.filter = "saturate(1)";
+        plusBet.style.pointerEvents = "all";
+        multiplierSazka = parseFloat(lineBet.innerHTML);
+    }
+}
+
+plusBet.onclick = () => {
+    if (lineBet.innerText == 1) {
+        lineBet.innerText = 2;
+        plusBet.style.filter = "saturate(0)";
+        plusBet.style.pointerEvents = "none";
+        minusBet.style.filter = "saturate(1)";
+        minusBet.style.pointerEvents = "all";
+        multiplierSazka = parseFloat(lineBet.innerHTML);
+    } else if (lineBet.innerText == 0.5) {
+        lineBet.innerText = 1;
+        minusBet.style.filter = "saturate(1)";
+        minusBet.style.pointerEvents = "all";
+        plusBet.style.filter = "saturate(1)";
+        plusBet.style.pointerEvents = "all";
+        multiplierSazka = parseFloat(lineBet.innerHTML);
+    }
+}
+
 function bigWin() {
-    sound.play();
+    soundBigWin.currentTime = 0;
+    soundBigWin.play();
     spinace.style.filter = "saturate(1)";
     spinace.style.pointerEvents = "none";
     const bigWinImage = document.createElement("img");
@@ -165,6 +217,9 @@ function bigWin() {
 }
 
 function comboWin() {
+    soundComboWin.currentTime = 0;
+    soundComboWin.volume = 0.4;
+    soundComboWin.play();
     spinace.style.filter = "saturate(1)";
     spinace.style.pointerEvents = "none";
     const comboWinImage = document.createElement("img");
