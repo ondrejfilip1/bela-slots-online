@@ -18,7 +18,7 @@
 
 <h3>Combos (same symbol on left & right)</h3>
 <p>
-  <strong>Four leaf clover</strong> - Adds 400$<br>
+  <strong>Four leaf clover</strong> - Adds 500$<br>
   <strong>Diamond</strong> - Adds 300$<br>
   <strong>Bar</strong> - Adds 300$<br>
 </p>
